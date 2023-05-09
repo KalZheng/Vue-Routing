@@ -11,7 +11,8 @@ const router = createRouter({
     routes: [
         { path: '/teams', component: TeamsList },
         { path: '/users', component: UsersList },
-        { path: '/teams/:teamId', component: TeamMembers },
+        // props: true allows the :teamId to pass as props instead of $route variable
+        { path: '/teams/:teamId', component: TeamMembers, props: true }, 
     ],
 });
 
