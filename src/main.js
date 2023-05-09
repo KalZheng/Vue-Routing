@@ -35,13 +35,26 @@ const router = createRouter({
     ],
     //change name for default active class
     //linkActiveClass: 'active'// TheNavigation:53
-    scrollBehavior(to, from, savedPosition) {
-        console.log(to, from, savedPosition);
-        if(savedPosition){
+    // scrollBehavior(to, from, savedPosition) {
+    scrollBehavior(_, _2, savedPosition) {
+        // console.log(to, from, savedPosition);
+        if (savedPosition) {
             return savedPosition;
         }
-        return { left: 0, top: 0};
+        return { left: 0, top: 0 };
     }
+});
+
+router.beforeEach((to, from, next) => {
+    console.log('Global BeforeEach');
+    console.log(to, from);
+    //the if is just to proof test
+    // if (to.name === 'team-members') {
+    //     next();
+    // } else {
+    //     next({ name: 'team-members', params: { teamId: 't2' } });
+    // }
+    next();
 });
 
 const app = createApp(App)
