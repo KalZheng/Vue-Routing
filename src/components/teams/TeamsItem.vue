@@ -14,7 +14,11 @@ export default {
       // return '/teams/'+ this.id;
       // return { path: 'teams' + this.id };//not much different
       //side note: this works also - this.$route.push({ name: 'team-members', params: { teamId: this.id } });
-      return { name: 'team-members', params: { teamId: this.id } };
+      return {
+        name: 'team-members',
+        params: { teamId: this.id },
+        query: { sort: 'asc' },// .test?sort=asc
+      };
     },
   },
 };
