@@ -10,10 +10,13 @@
 export default {
   props: ['id', 'name', 'memberCount'],
   computed: {
-    teamMemberLink(){
-      return '/teams/'+ this.id;
-    }
-  }
+    teamMemberLink() {
+      // return '/teams/'+ this.id;
+      // return { path: 'teams' + this.id };//not much different
+      //side note: this works also - this.$route.push({ name: 'team-members', params: { teamId: this.id } });
+      return { name: 'team-members', params: { teamId: this.id } };
+    },
+  },
 };
 </script>
 

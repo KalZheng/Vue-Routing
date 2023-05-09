@@ -15,8 +15,8 @@ const router = createRouter({
         // { path: '/teams', component: TeamsList, alias: '/' },
         {
             //nested routes for display different part to be display
-            path: '/teams', component: TeamsList, children: [
-                { path: ':teamId', component: TeamMembers, props: true },//teams/t1
+            name: 'teams', path: '/teams', component: TeamsList, children: [
+                { name: 'team-members', path: ':teamId', component: TeamMembers, props: true },//teams/t1
             ]
         },
         { path: '/users', component: UsersList },
