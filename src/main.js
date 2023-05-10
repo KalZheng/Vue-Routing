@@ -27,7 +27,13 @@ const router = createRouter({
         {
             path: '/users',
             // component: UsersList
-            components: { default: UsersList, footer: UsersFooter }
+            components: { default: UsersList, footer: UsersFooter },
+            //individual guard/hook
+            beforeEnter(to, from, next){
+                console.log('user BeforeEnter');
+                console.log(to, from);
+                next();
+            },
         },
         // props: true allows the :teamId to pass as props instead of $route variable
         // { path: '/teams/:teamId', component: TeamMembers, props: true },
@@ -45,6 +51,7 @@ const router = createRouter({
     }
 });
 
+// this is for all,
 router.beforeEach((to, from, next) => {
     console.log('Global BeforeEach');
     console.log(to, from);

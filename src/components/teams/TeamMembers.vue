@@ -49,6 +49,13 @@ export default {
     // this.loadTamMembers(this.$route);
     this.loadTamMembers(this.teamId);
   },
+  //an alternative to solve update teamId but not as effecient
+  beforeRouteUpdate(to, from, next) {
+    console.log('TeamMembers cmp beforeRouteUpdate');
+    console.log(to, from);
+    // this.loadTamMembers(to.params.teamId);
+    next();
+  },
   watch: {
     // $route(newRoute) {
     //   this.loadTamMembers(newRoute);
