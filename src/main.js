@@ -18,6 +18,7 @@ const router = createRouter({
         {
             //nested routes for display different part to be display
             name: 'teams', path: '/teams',
+            meta:{ needsAuth: true},
             // component: TeamsList,
             components: { default: TeamsList, footer: TeamsFooter },
             children: [
@@ -29,7 +30,7 @@ const router = createRouter({
             // component: UsersList
             components: { default: UsersList, footer: UsersFooter },
             //individual guard/hook
-            beforeEnter(to, from, next){
+            beforeEnter(to, from, next) {
                 console.log('user BeforeEnter');
                 console.log(to, from);
                 next();
@@ -55,6 +56,12 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     console.log('Global BeforeEach');
     console.log(to, from);
+    if(to.meta.needsAuth){
+        console.log('Needs Auth');
+        next();
+    }else{
+        next();
+    }
     //the if is just to proof test
     // if (to.name === 'team-members') {
     //     next();
